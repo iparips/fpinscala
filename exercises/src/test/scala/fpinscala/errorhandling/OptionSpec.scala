@@ -20,4 +20,16 @@ class OptionSpec extends Specification {
 
   }
 
+  "getOrElse" >> {
+
+    "given Some it unwraps the value" >> {
+      Some(1).getOrElse(2) shouldEqual 1
+    }
+
+    "given None it returns default value" >> {
+      None.getOrElse(2) shouldEqual 2
+    }
+
+  }
+
 }
