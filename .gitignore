@@ -1,12 +1,36 @@
-*.un~
-*.swp
-tags
-target
-project/boot
+# Created by .ignore support plugin (hsz.mobi)
+### Scala template
+*.class
+*.log
+
+# sbt specific
+.cache
 .history
-project.vim
-*.old
-.idea
-.project
-.classpath
-.metadata/
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+**/project/boot/
+**/project/target/
+**/project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+
+
+### SBT template
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
+
+target/
+lib_managed/
+src_managed/
+.history
+.cache
+
+### Idea
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+*.iws
