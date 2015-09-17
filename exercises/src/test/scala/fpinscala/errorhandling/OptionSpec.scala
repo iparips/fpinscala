@@ -20,6 +20,20 @@ class OptionSpec extends Specification {
 
   }
 
+  "flatMap" >> {
+
+    val f: Int => Option[Int] = Some(_)
+
+    "given Some it unwraps the value" >> {
+      Some(1).flatMap(f) shouldEqual Some(1)
+    }
+
+    "given None it returns default value" >> {
+      None.flatMap(f) shouldEqual None
+    }
+
+  }
+
   "getOrElse" >> {
 
     "given Some it unwraps the value" >> {
