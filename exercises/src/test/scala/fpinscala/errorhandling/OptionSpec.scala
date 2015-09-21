@@ -46,4 +46,19 @@ class OptionSpec extends Specification {
 
   }
 
+  "map2" >> {
+
+    // what function might I want to give to map 2
+    val f = (a:String, b:String) => a + b
+
+    "given two Some applies function to unwrapped values" >> {
+      Option.map2(Some("Hello"), Some("World"))(f) shouldEqual Some("HelloWorld")
+    }
+
+    "given one None it returns None" >> {
+      Option.map2(Some("Hello"), None)(f) shouldEqual None
+    }
+
+  }
+
 }
