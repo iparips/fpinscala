@@ -61,4 +61,26 @@ class OptionSpec extends Specification {
 
   }
 
+  // every operation in the list should succeed,
+  // otherwise the aggregate operation should fail
+  "sequence" >> {
+
+    "converts a list of None to None" >> {
+      Option.sequence(List[Option[Int]](None)) shouldEqual None
+    }
+
+    "converts empty list of options to an empty option of list" >> {
+      Option.sequence(List[Option[Int]]()) shouldEqual Some(List())
+    }
+
+    "returns None when any list members are None" >> {
+      Option.sequence(List[Option[Int]](None, Some(1))) shouldEqual None
+    }
+    
+    "converts list of options to an option of list" >> {
+      Option.sequence(List[Option[Int]](Some(1))) shouldEqual Some(List(1))
+    }
+
+  }
+
 }
