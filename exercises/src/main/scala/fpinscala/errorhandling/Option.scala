@@ -25,6 +25,13 @@ sealed trait Option[+A] {
   def orElse[B>:A](ob: => Option[B]): Option[B] = sys.error("todo")
 
   def filter(f: A => Boolean): Option[A] = sys.error("todo")
+
+  def getValue: A = {
+    this match {
+      case None => throw new IllegalArgumentException("the arg was wrong...");
+      case Some(a) => a
+    }
+  }
 }
 case class Some[+A](get: A) extends Option[A]
 case object None extends Option[Nothing]
@@ -55,7 +62,12 @@ object Option {
   def map2[A,B,C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] =
     a.flatMap( aa => b.map( bb => f(aa,bb)))
 
-  def sequence[A](a: List[Option[A]]): Option[List[A]] = sys.error("todo")
+  def sequence[A](a: List[Option[A]]): Option[List[A]] = {
+    val nones = a.find((item) => item == None)
+    if (!nones.isEmpty) { return None }
+    val list = a.map((item:Option[A]) => item.getValue)
+    Some(list)
+  }
 
   def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = sys.error("todo")
 }
