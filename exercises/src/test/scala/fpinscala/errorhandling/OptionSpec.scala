@@ -49,7 +49,7 @@ class OptionSpec extends Specification {
   "map2" >> {
 
     // what function might I want to give to map 2
-    val f = (a:String, b:String) => a + b
+    val f = (a: String, b: String) => a + b
 
     "given two Some applies function to unwrapped values" >> {
       Option.map2(Some("Hello"), Some("World"))(f) shouldEqual Some("HelloWorld")
@@ -76,12 +76,33 @@ class OptionSpec extends Specification {
     "returns None when any list members are None" >> {
       Option.sequence(List[Option[Int]](None, Some(1))) shouldEqual None
     }
-    
+
     "converts list of options to an option of list" >> {
       Option.sequence(List[Option[Int]](Some(1))) shouldEqual Some(List(1))
     }
 
   }
+
+  // aggregates non-None elements of a list
+    "flatten" >> {
+
+      "empty list stays an empty list" >> {
+        Option.flatten(List[Option[Int]]()) shouldEqual List()
+      }
+
+      "removes None members" >> {
+        Option.flatten(List[Option[Int]](None)) shouldEqual List()
+      }
+
+      "retrieves values from options" >> {
+        Option.flatten(List[Option[Int]](Some(1))) shouldEqual List(1)
+      }
+
+      "strips Nones & extracts values from Options" >> {
+        Option.flatten(List[Option[Int]](Some(1), None)) shouldEqual List(1)
+      }
+
+    }
 
   "filter" >> {
 
