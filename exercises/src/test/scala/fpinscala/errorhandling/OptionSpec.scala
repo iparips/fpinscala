@@ -83,4 +83,20 @@ class OptionSpec extends Specification {
 
   }
 
+  "filter" >> {
+
+    "returns None when option is None" >> {
+      None.filter((x) => x == 1) shouldEqual None
+    }
+
+    "returns None when the function yields false" >> {
+      Some(1).filter((x) => x == 2) shouldEqual None
+    }
+
+    "returns itself when the function yields true" >> {
+      Some(1).filter((x) => x == 1) shouldEqual Some(1)
+    }
+
+  }
+
 }
