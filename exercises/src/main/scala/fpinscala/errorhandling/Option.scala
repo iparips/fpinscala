@@ -80,5 +80,7 @@ object Option {
       map2(acc,value)( (acc, value) => value :: acc ))
   }
 
+  def flatten[A](a: List[Option[A]]): List[A] = ???
+
   def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] = sys.error("todo")
 }
