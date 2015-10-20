@@ -24,7 +24,13 @@ sealed trait Option[+A] {
 
   def orElse[B>:A](ob: => Option[B]): Option[B] = sys.error("todo")
 
-  def filter(f: A => Boolean): Option[A] = sys.error("todo")
+  def filter(f: A => Boolean): Option[A] = {
+    this match {
+      case None => None
+      case x if !f(x.getValue) => None
+      case _ => this
+    }
+  }
 
   def getValue: A = {
     this match {
