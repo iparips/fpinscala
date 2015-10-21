@@ -120,4 +120,16 @@ class OptionSpec extends Specification {
 
   }
 
+  "traverse" >> {
+
+    "given empty list returns Option of empty list" >> {
+      Option.traverse(List())(x => Some(x)) shouldEqual Some(List())
+    }
+
+    "given a non-empty list, return option of that list" >> {
+      Option.traverse(List(1))(x => Some(x)) shouldEqual Some(List(1))
+    }
+
+  }
+
 }
