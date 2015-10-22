@@ -16,4 +16,20 @@ class StreamSpec extends Specification {
 
   }
 
+  "take" >> {
+
+    "given a stream with more than 2 elements, take 2 returns the first 2" >> {
+      Stream(1, 2, 3, 4).take(2) shouldEqual Stream(1, 2)
+    }
+
+    "given an empty stream, take 2 returns empty stream" >> {
+      Stream().take(2) shouldEqual Stream()
+    }
+
+    "given a stream with 1 element, take 2 returns that element" >> {
+      Stream(1).take(2) shouldEqual Stream(1)
+    }
+
+  }
+
 }
