@@ -17,7 +17,12 @@ trait Stream[+A] {
     case Empty => None
     case Cons(h, t) => if (f(h())) Some(h()) else t().find(f)
   }
-  def take(n: Int): Stream[A] = sys.error("todo")
+
+  def take(n: Int): Stream[A] = this match {
+    case Empty => Empty
+    case Cons(h, _) if n == 1 => Stream(h())
+    case Cons(h, t) if n > 1 => Cons(h, () => t().take(n - 1))
+  }
 
   def drop(n: Int): Stream[A] = sys.error("todo")
 
@@ -39,7 +44,12 @@ trait Stream[+A] {
 
 }
 case object Empty extends Stream[Nothing]
-case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
+case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A] {
+  override def equals(other: Any): Boolean = other match {
+    case Cons(h2, t2) => h() == h2() && t() == t2();
+    case _ => false
+  }
+}
 
 object Stream {
   def cons[A](hd: => A, tl: => Stream[A]): Stream[A] = {
