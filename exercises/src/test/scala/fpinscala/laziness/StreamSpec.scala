@@ -32,4 +32,20 @@ class StreamSpec extends Specification {
 
   }
 
+  "drop" >> {
+
+    "given a stream with more than 2 elements, it returns the rest" >> {
+      Stream(1, 2, 3, 4).drop(2) shouldEqual Stream(3, 4)
+    }
+
+    "given a stream with 2 elements, it returns empty stream" >> {
+      Stream(1, 2).drop(2) shouldEqual Empty
+    }
+
+    "given a stream with less than 2 elements, it returns empty stream" >> {
+      Stream(1).drop(2) shouldEqual Empty
+    }
+
+  }
+
 }
