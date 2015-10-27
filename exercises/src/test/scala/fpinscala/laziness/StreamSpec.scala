@@ -64,4 +64,16 @@ class StreamSpec extends Specification {
 
   }
 
+  "forAll" >> {
+
+    "given there are elements matching predicate, return true" >> {
+      Stream(1, 2, 3, 4).forAll(_ > 0) shouldEqual true
+    }
+
+    "given no elements match, return false" >> {
+      Stream(1, 2, 3, -4).forAll(_ > 0) shouldEqual false
+    }
+
+  }
+
 }
