@@ -48,4 +48,20 @@ class StreamSpec extends Specification {
 
   }
 
+  "takeWhile" >> {
+
+    "given the predicate rejects the 2nd element, return the first one" >> {
+      Stream(1, 2, 3).takeWhile(_ != 2) shouldEqual Stream(1)
+    }
+
+    "given the predicate rejects the 1st element, return Empty" >> {
+      Stream(1, 2, 3).takeWhile(_ != 1) shouldEqual Empty
+    }
+
+    "given no elements match predicate, return Empty" >> {
+      Stream(1, 2, 3).takeWhile(_ == 4) shouldEqual Empty
+    }
+
+  }
+
 }
