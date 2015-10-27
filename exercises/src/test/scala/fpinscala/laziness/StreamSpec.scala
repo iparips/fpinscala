@@ -76,4 +76,16 @@ class StreamSpec extends Specification {
 
   }
 
+  "headOption" >> {
+
+    "given empty Stream, returns None" >> {
+      Empty.headOption shouldEqual None
+    }
+
+    "given non-empty Stream, returns Some(head)" >> {
+      Stream(1, 2, 3).headOption shouldEqual Some(1)
+    }
+
+  }
+
 }
