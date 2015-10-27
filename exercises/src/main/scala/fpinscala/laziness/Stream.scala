@@ -43,7 +43,9 @@ trait Stream[+A] {
     this.foldRight(true)((element, acc) => acc && p(element))
   }
 
-  def headOption: Option[A] = sys.error("todo")
+  def headOption: Option[A] = {
+    this.foldRight[Option[A]](None)((el, acc) => Some(el))
+  }
 
   // 5.7 map, filter, append, flatmap using foldRight. Part of the exercise is
   // writing your own function signatures.
