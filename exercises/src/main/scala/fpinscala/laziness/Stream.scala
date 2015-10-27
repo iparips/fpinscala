@@ -31,7 +31,12 @@ trait Stream[+A] {
   def takeWhile(p: A => Boolean): Stream[A] = this match {
     case Empty => Empty
     case Cons(h,t) => if(p(h())) Stream.cons( h(), t() takeWhile p ) else Empty
-    }
+  }
+
+  def takeWhileUsingFoldRight(p: A => Boolean): Stream[A] = {
+    this.foldRight(Stream[A]())(
+      (el, acc) => if (p(el)) Stream.cons(el, acc) else Empty
+    )
   }
 
   def forAll(p: A => Boolean): Boolean = sys.error("todo")
