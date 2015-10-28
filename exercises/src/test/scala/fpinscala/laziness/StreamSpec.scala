@@ -88,4 +88,16 @@ class StreamSpec extends Specification {
 
   }
 
+  "map" >> {
+
+    "given an empty stream, returns Empty" >> {
+      Stream().map((x:Int) => x + 1) shouldEqual Empty
+    }
+
+    "given a non-empty stream, returns Stream with f applied to all elements" >> {
+      Stream(1,2).map(_ + 1) shouldEqual Stream(2,3)
+    }
+
+  }
+
 }
