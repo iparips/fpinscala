@@ -61,6 +61,9 @@ trait Stream[+A] {
     foldRight[Stream[B]](Empty)((el, acc) => Stream.cons(f(el), acc))
   }
 
+  def filter(f: A => Boolean): Stream[A] =
+    foldRight(Stream.empty[A])((h,t) => if (f(h)) Stream.cons[A](h, t) else t)
+
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A] {
