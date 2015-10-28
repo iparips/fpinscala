@@ -100,4 +100,16 @@ class StreamSpec extends Specification {
 
   }
 
+  "filter" >> {
+
+    "given there are elements matching predicate, return them" >> {
+      Stream(1, 2, 3).filter(_ > 1) shouldEqual Stream(2, 3)
+    }
+
+    "given no elements match, return Empty" >> {
+      Stream(1, 2, 3).filter(_ < 0) shouldEqual Empty
+    }
+
+  }
+
 }
