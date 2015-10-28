@@ -57,6 +57,10 @@ trait Stream[+A] {
     case Cons(head, tail) => head() :: tail().toList
   }
 
+  def map[B](f:A => B):Stream[B] = {
+    foldRight[Stream[B]](Empty)((el, acc) => Stream.cons(f(el), acc))
+  }
+
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A] {
