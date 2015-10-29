@@ -112,4 +112,16 @@ class StreamSpec extends Specification {
 
   }
 
+  "append" >> {
+
+    "given empty stream, it appends the element" >> {
+      Stream.empty[Int].append(Stream(1)) shouldEqual Stream(1)
+    }
+
+    "given non-empty stream, it appends the element" >> {
+      Stream(2, 3).append(Stream(1)).toList must contain(allOf(1,2,3))
+    }
+
+  }
+
 }
