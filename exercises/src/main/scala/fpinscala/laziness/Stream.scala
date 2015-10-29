@@ -64,12 +64,20 @@ trait Stream[+A] {
   def filter(f: A => Boolean): Stream[A] =
     foldRight(Stream.empty[A])((h,t) => if (f(h)) Stream.cons[A](h, t) else t)
 
+  def append[S >: A](s: Stream[S]): Stream[S] = {
+    foldRight(s)((h,t) => Stream.cons(h, t))
+  }
+
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A] {
   override def equals(other: Any): Boolean = other match {
     case Cons(h2, t2) => h() == h2() && t() == t2();
     case _ => false
+  }
+
+  override def toString:String = {
+    this.toList.mkString(",")
   }
 }
 
