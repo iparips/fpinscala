@@ -6,10 +6,14 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/answers-build.iml" filepath="$PROJECT_DIR$/.idea/modules/answers-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/chapter-code.iml" filepath="$PROJECT_DIR$/.idea/modules/chapter-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/chapter-code-build.iml" filepath="$PROJECT_DIR$/.idea/modules/chapter-code-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chaptercode/.idea/modules/chaptercode.iml" filepath="$PROJECT_DIR$/chaptercode/.idea/modules/chaptercode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chaptercode/.idea/modules/chaptercode-build.iml" filepath="$PROJECT_DIR$/chaptercode/.idea/modules/chaptercode-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/exercises/exercises.iml" filepath="$PROJECT_DIR$/exercises/exercises.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/exercises-build.iml" filepath="$PROJECT_DIR$/.idea/modules/exercises-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fpinscala.iml" filepath="$PROJECT_DIR$/.idea/modules/fpinscala.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fpinscala-build.iml" filepath="$PROJECT_DIR$/.idea/modules/fpinscala-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/project/.idea/modules/project.iml" filepath="$PROJECT_DIR$/exercises/project/.idea/modules/project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercises/project/.idea/modules/project-build.iml" filepath="$PROJECT_DIR$/exercises/project/.idea/modules/project-build.iml" />
     </modules>
   </component>
 </project>
